@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+	
+	<div class="main">
+
+	 <fieldset class="form-group">
+	 
+	 <h5>REGISTRO DE ESTATÍSTICA</h5>
+
+	<div th:each="e : ${estatistica}">
+	
+		<input type="hidden" name="${e.id}">
+	
+		<div class="form-row">
+		<div class="col-1">
+		<label><b>UNIDADE:</b></label> 
+		</div>
+		<div class="col-5">
+		<label th:text="${e.unidade.nome}">  </label>
+		</div>
+		</div>
+		
+		<div class="form-row">
+		<div class="col-1">
+		<label><b>ANO:</b></label> 
+		</div>
+		<div class="col-2">
+		<span th:text="${e.ano}"></span> 
+		</div>
+		<div class="col-1">
+		<label><b>MÊS:</b></label> 
+		</div>
+		<div class="col-2">
+		<span th:text="${e.mes}"></span> 
+		</div>
+		</div>
+		
+		<div class="form-row border-bottom">
+		<div class="col-7">
+		<label><b>ITEM</b></label> 
+		</div>
+		<div class="col-2">
+		<label><b>QUANTIDADE</b></label>  
+		</div>
+		<div class="col-1">
+		<label><b>PESO</b></label>  
+		</div>
+		<div class="col-2">
+		<label><b>PONTUAÇÃO</b></label>  
+		</div>
+		</div>
+		
+		<div class="form-row border-bottom">
+		<div class="col-7">
+		<label>APFD (PCMG + ICV 11 OU TRAFICO DE DROGAS OU ORGANIZAÇÕES CRIMINOSAS OU SONEGAÇÃO FISCAL OU LAVAGEM DE DINHEIRO OU CORRUPÇÃO)</label> 
+		</div>
+		<div class="col-2">
+		<span th:text="${e.apfd}"></span> 
+		</div>
+		<div class="col-1">
+		<label><b>* 8 =</b></label>  
+		</div>
+		<div class="col-2">
+		<span th:text="${e.apfdTotal}"></span> 
+		</div>
+		</div>
+		
+		<div class="form-row border-bottom">
+		<div class="col-7">
+		<label>IP PORTARIA COM INDICIAMENTO</label> 
+		</div>
+		<div class="col-2">
+		<span th:text="${e.ip}"></span> 
+		</div>
+		<div class="col-1">
+		<label><b>* 8 =</b></label>  
+		</div>
+		<div class="col-2">
+		<span th:text="${e.ipTotal}"></span> 
+		</div>
+		</div>
+		
+		<div class="form-row border-bottom">
+		<div class="col-7">
+		<label>TCO</label> 
+		</div>
+		<div class="col-2">
+		<span th:text="${e.tco}"></span> 
+		</div>
+		<div class="col-1">
+		<label><b>* 1 =</b></label>  
+		</div>
+		<div class="col-2">
+		<span th:text="${e.tcoTotal}"></span> 
+		</div>
+		</div>
+		
+		<h5 class="line-botton"></h5>
+		
+		<div class="form-row">
+		<div class="form-group pt-3">
+			<a th:if="${e.editar}" class="btn btn-secondary" th:href="@{/atualizarEstatistica(estatisticaId = ${e.id})}">Atualizar</a>
+			<a class="btn btn-secondary ml-3" href="/relatorioEstatistica">Voltar</a>
+		</div>
+		</div>
+		
+	</div>
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

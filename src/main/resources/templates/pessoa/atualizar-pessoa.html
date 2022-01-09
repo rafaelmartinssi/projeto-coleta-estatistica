@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+
+	<div class="main">
+
+	 <fieldset class="form-group">
+	 
+	 <h5>ATUALIZAÇÃO DE SERVIDOR</h5>
+
+	 <form action="salavarAtualizarPessoa" id="formuser" method="post" th:object="${pessoa}">
+	
+		<input type="hidden" th:field="*{id}">
+	
+		<div class="form-row pl-5 pt-3">
+    	<div class="form-group col-md-4">
+		<label>Nome </label> 
+		<input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}"> 
+		</div>
+
+		</div> 
+		
+		<div class="form-row pl-5">
+    	<div class="form-group col-md-4">
+		<label>Masp </label> 
+		<input	type="text" class="form-control" id="masp" name="masp" th:field="*{masp}" readonly="readonly"> 
+		</div>
+		<div class="form-group col-md-4">
+		<label>Celular </label> 
+		<input type="text" class="form-control" id="celular" name="celular" th:field="*{celular}">
+		</div>
+		</div> 
+      	
+      	<div class="form-row pl-5">
+      	<div class="form-group col-md-4">
+		<label>E-mail </label> 
+		<input type="email" class="form-control" id="email" name="email" th:field="*{email}"> 
+		</div>
+      	
+      	</div>
+		
+		<h5 class="line-botton"></h5>
+		
+		<div class="form-row">
+		<div class="form-group pt-3">
+		<input class="btn btn-secondary ml-1" value="Atualizar" type="submit">
+		<a class="btn btn-secondary ml-5" href="/cadastropessoa">Voltar</a>
+		</div>
+		</div>
+		
+	</form>
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

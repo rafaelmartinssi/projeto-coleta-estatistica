@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+
+	<div class="main">
+
+	 <fieldset class="form-group">
+	 
+	 <h5>PESQUISA DE SERVIDORES</h5>
+
+	 <form action="buscaPorParametro">
+		<div class="form-row">
+    	<div class="form-group col-6"> 
+		  <input type="text" class="form-control" placeholder="Digite um nome" name="nomeBusca" th:value="${nomeBusca}">
+		</div>
+		</div>
+		
+		<div class="form-row">
+    	<div class="form-group col-6"> 
+		  <input type="number" class="form-control" placeholder="Digite o codigo da unidade" name="unidadeBusca" th:value="${unidadeBusca}">
+		</div>
+		</div>
+		 
+		<div class="form-row">
+		<div class="form-group col-2">
+		  <input class="btn btn-secondary" type="submit" value="Buscar">
+		</div>
+		<div class="form-group col-2" th:if="${pessoa != null}">
+		  <a th:href="@{/geraRelatorio2(nomeBusca=${nomeBusca}, unidadeBusca=${unidadeBusca})}" target="_blank" class="btn btn-secondary">Gerar PDF</a>
+		</div>
+		</div>
+		
+		</form>
+
+		<h5 class="line-botton"></h5>
+		
+		<p class="mt-3">Digite o nome do usuário que deseja encontrar e clique em buscar, ou apenas clique em buscar para trazer todos os usuários.</p>
+
+		<div class="mt-4">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Masp</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p : ${pessoa}">
+					<th th:text="${p.id}" scope="row"></th>
+					<td th:text="${p.nome}"></td>
+					<td th:text="${p.masp}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<span th:if="${pessoa == null}">Nenhuma pesquisa no momento</span>
+		</div>
+	
+	<div class="row mt-3 col-12" th:if="${pessoa != null }">
+		<div class="row mt-3 col-12" th:if="${pessoa.totalPages > 1}">
+		
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+			    <li class="page-item">
+			    	<span th:if="${pessoa.hasPrevious()}" >
+			    		<a class="page-link" th:href="@{/buscaPorParametro(page=${pessoa.number-1}, size=${pessoa.size}, nomeBusca=${nomeBusca}, unidadeBusca=${unidadeBusca})}" aria-label="Previous">
+					      	<span aria-hidden="true">&laquo;</span>
+					        <span class="sr-only">Anterior</span>
+					    </a>
+			    	</span>
+			    </li>
+				<th:block th:each="i : ${#numbers.sequence(0,pessoa.totalPages-1)}">
+					<li class="page-item">
+
+						<span th:if="${pessoa.number == i}" class="page-link selected">[[${i}+1]]</span>
+						<span th:unless="${pessoa.number == i}">
+							<a class="page-link" th:href="@{/buscaPorParametro(page=${i}, size=${pessoa.size}, nomeBusca=${nomeBusca}, unidadeBusca=${unidadeBusca})}">[[ ${i} + 1 ]]</a>
+						</span>
+						
+					</li>
+				</th:block>
+			    <li class="page-item">
+			    	<span th:if="${pessoa.hasNext()}">
+			    		<a class="page-link" th:href="@{/buscaPorParametro(page=${pessoa.number+1}, size=${pessoa.size}, nomeBusca=${nomeBusca}, unidadeBusca=${unidadeBusca})}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						    <span class="sr-only">Próximo</span>
+						</a>
+			    	</span>
+			    </li>
+			  </ul>
+			</nav>
+			
+		</div>
+		<div class="row mt-3 col-12" th:if="${pessoa.totalPages == 0}">
+		Nenhum registro para essa pesquisa
+		</div>
+		</div>
+
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

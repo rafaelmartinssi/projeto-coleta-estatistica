@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+
+	<div class="main">
+
+	 <fieldset class="form-group">
+	 
+	 <h5>ATUALIZIÇÃO DE PERMISSÕES</h5>
+
+	<form action="salvarAutorizar" method="post" th:object="${usuario}">
+		
+		<input type="hidden" th:field="*{id}">
+		
+		<div class="row">
+      	
+      	<div class="form-group col-2">
+      	<label class="mt-2">Permissão </label>
+      	</div>
+      	<div class="form-group col-6">
+      	<select id="authorization" name="authorization" class="form-control">
+      	<option value="" selected disabled>Escolha</option>
+        <option value="ROLE_USER">USER</option>
+        <option value="ROLE_ADMIN">ADMIN</option>
+        <option value="ROLE_MASTER">MASTER</option>
+      	</select>
+      	</div>
+      	</div>
+		
+		<h5 class="line-botton"></h5>
+		
+		<div class="form-row">
+		<div class="form-group pt-3">
+		<input class="btn btn-secondary ml-1" value="Incluir" type="submit">
+		<a class="btn btn-secondary ml-5" href="relatorioUsuario">Voltar</a>
+		</div>
+		</div>
+		
+	</form>
+	
+	<div class="row pl-3 full-name" th:each="u : ${usuario}">
+		<label>Usuário: </label>
+		<label class="ml-1" th:text="${u.nome}"></label>
+	</div>
+	
+	<p>Permissões atribuidas a este servidor.</p>
+	
+		<table class="table table-striped mt-2 col-6 border table-roles">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Permissões</th>
+					<th scope="col">Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="r : ${roles}">
+					<td th:text="${r.id}"></td>
+					<td th:text="${r.role}"></td>
+					<td><a th:href="@{/excluirRole(roleNome = ${r.role}, usuarioId = ${usuario.id})}"><i class="bi bi-trash-fill icons"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

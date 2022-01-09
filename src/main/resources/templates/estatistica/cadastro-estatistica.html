@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Cadastro de Estatísticas')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+
+	<div class="main">
+
+	 <fieldset class="form-group">
+	 
+	 <h5>CADASTRO DE ESTATÍSTICAS</h5>
+
+	<form action="salvarEstatistica" id="formEstatistica" method="post">
+	
+	<p>Esta página permite lançar as estatísticas de um determinado mês..</p>
+
+		<div class="form-row pl-3">
+			<div class="form-group row col-4">
+				<label class="col-2 col-form-label">Mês </label>
+				<div class="col-10"> 
+					<select id="mes" name="mes" class="form-control">
+						<option value="" selected disabled>Escolha...</option>
+						<option value="JANEIRO">JANEIRO</option>
+						<option value="FEVEREIRO">FEVEREIRO</option>
+						<option value="MARÇO">MARÇO</option>
+						<option value="ABRIL">ABRIL</option>
+						<option value="MAIO">MAIO</option>
+						<option value="JUNHO">JUNHO</option>
+						<option value="JULHO">JULHO</option>
+						<option value="AGOSTO">AGOSTO</option>
+						<option value="SETEMBRO">SETEMBRO</option>
+						<option value="OUTUBRO">OUTUBRO</option>
+						<option value="NOVEMBRO">NOVEMBRO</option>
+						<option value="DEZEMBRO">DEZEMBRO</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row col-4">
+		      	<label class="col-2 col-form-label">Ano </label>
+		      	<div class="col-10"> 
+				   	<select id="ano" name="ano" class="form-control">
+			     		<option value="" selected disabled>Escolha...</option>
+			 	    	<option value="2021">2021</option>
+					    <option value="2022">2022</option>
+						<option value="2023">2023</option>
+						<option value="2024">2024</option>
+						<option value="2025">2025</option>
+			    	</select>
+		    	</div>
+		    </div> 
+		</div>
+		
+		<div class="form-group row col-12">
+			<label class="col-7 col-form-label"><b>ITEM</b></label> 
+			<label class="col-2 col-form-label"><b>QUANTIDADE</b></label>
+			<label class="col-1 col-form-label"><b>PESO</b></label>
+			<label class="col-2 col-form-label"><b>PONTUAÇÃO</b></label>
+		</div>
+		
+		<div class="form-group row col-12">
+			<label class="col-7 col-form-label">APFD (PCMG + ICV 11 OU TRAFICO DE DROGAS OU ORGANIZAÇÕES CRIMINOSAS OU SONEGAÇÃO FISCAL OU LAVAGEM DE DINHEIRO OU CORRUPÇÃO)</label> 
+			<div class="col-2">
+				<input type="text" class="form-control calc" id="apfd" name="apfd"> 
+			</div>
+			<label class="col-1 col-form-label"><b>* 8 =</b></label>
+			<div class="col-2">
+				<input type="text" class="form-control" id="apfdTotal" name="apfdTotal" readonly="readonly" placeholder="0.00"> 
+			</div>
+		</div>
+
+		<div class="form-group row col-12">
+			<label class="col-7 col-form-label">IP PORTARIA COM INDICIAMENTO</label> 
+			<div class="col-2">
+				<input type="text" class="form-control calc" id="ip" name="ip"> 
+			</div>
+			<label class="col-1 col-form-label"><b>* 8 =</b></label>
+			<div class="col-2">
+				<input type="text" class="form-control" id="ipTotal" name="ipTotal" readonly="readonly" placeholder="0.00"> 
+			</div>
+		</div>
+		
+		<div class="form-group row col-12">
+			<label class="col-7 col-form-label">TCO</label> 
+			<div class="col-2">
+				<input type="text" class="form-control calc" id="tco" name="tco"> 
+			</div>
+			<label class="col-1 col-form-label"><b>* 1 =</b></label>
+			<div class="col-2">
+				<input type="text" class="form-control" id="tcoTotal" name="tcoTotal" readonly="readonly" placeholder="0.00"> 
+			</div> 
+		</div>
+		
+		<h5 class="line-botton"></h5>
+		
+		<div class="form-row">
+		<div class="form-group pt-3">
+		<input class="btn btn-secondary ml-1" value="Incluir" type="submit">
+		<a class="btn btn-secondary ml-3" href="/">Voltar</a>
+		</div>
+		</div>
+		
+	</form>
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

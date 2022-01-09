@@ -1,0 +1,177 @@
+<span th:fragment="scripts"> 
+
+		<!-- Jquery core e para uso do bootstrap -->
+		<script
+		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script> <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script> <script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script> 
+		
+		<!-- Jquery para uso de máscaras nos inputs -->
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js">	
+		</script> 
+		<!-- Jquery para validação de formularios -->
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js">
+		</script>
+		<!-- Jquery para mensagens em português -->
+		<script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/localization/messages_pt_BR.min.js">
+		</script>
+		
+
+		<!-- função para calcular valor total de estatísticas automatico -->
+		<script type="text/javascript">    
+        
+	        $(document).ready(function(){
+	            //Quando o valor do campo mudar...
+	            $('.calc').keyup(function(){
+	                var apfd = parseFloat($('#apfd').val().replace(".", "").replace(",", ".")) || 0.00;
+	                var ip = parseFloat($('#ip').val().replace(".", "").replace(",", ".")) || 0.00;
+	                var tco = parseFloat($('#tco').val().replace(".", "").replace(",", ".")) || 0.00;
+	
+	                //O total 
+	                var apfdTotal = apfd * 8;
+	                var ipTotal = ip * 8;
+	                var tcoTotal = tco * 1;
+	
+	                $('#apfdTotal').val(number_format(apfdTotal,2, '.', '.'));
+	                $('#ipTotal').val(number_format(ipTotal,2, '.', '.'));
+	                $('#tcoTotal').val(number_format(tcoTotal,2, '.', '.'));
+	
+	            });
+	        });
+
+		    function number_format( number, decimals, dec_point, thousands_sep ) {
+		    var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+		    var d = dec_point == undefined ? "," : dec_point;
+		    var t = thousands_sep == undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+		    var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+		    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");}
+		        
+    	</script>
+		
+		
+		<!-- script que adiciona máscara nos campos -->
+		 <script type="text/javascript">
+			$(document).ready(function() {
+				$("#celular").mask("(00)00000-0000")
+				$("#masp").mask("0.000.000-0", {
+					reverse : true
+				})
+				$("#apfd").mask("0000")
+				$("#ip").mask("0000")
+				$("#tco").mask("0000")
+			})
+		</script>
+		
+		<!-- script que pega data e hora do sistema -->
+		<script type="text/javascript">
+			// Função para formatar 1 em 01
+			const zeroFill = n => {
+				return ('0' + n).slice(-2);
+			}
+
+			// Cria intervalo
+			const interval = setInterval(() => {
+				// Pega o horário atual
+				const now = new Date();
+
+				// Formata a data conforme dd/mm/aaaa hh:ii:ss
+				const dataHora = zeroFill(now.getUTCDate()) + '/' + zeroFill((now.getMonth() + 1)) + '/' + now.getFullYear() + ' ' + zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
+
+				// Exibe na tela usando a div#data-hora
+				document.getElementById('data-hora').innerHTML = dataHora;
+			}, 1000);
+		</script>
+		
+		<!-- script de validação de formulários (user) -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#formpessoa").validate({
+					rules:{
+						nome:{
+							required: true,
+							maxlength: 100,
+							minlength: 2
+						},
+						email: {
+							required: true,
+							email: true
+						},
+						senhaValor: {
+							required: true,
+							maxlength: 6,
+							minlength: 4
+						},
+						masp: {
+							required: true,
+							maxlength: 11,
+							minlength: 9
+						},
+						celular: {
+							required: true,
+							maxlength: 14,
+							minlength: 14
+						}
+					}
+				})
+			})
+		</script>
+		
+		<!-- script de validação de formulário de estastística -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#formEstatistica").validate({
+					rules:{
+						mes:{
+							required: true,
+						},
+						ano: {
+							required: true,
+						},
+						apfd: {
+							required: true,
+						},
+						ip: {
+							required: true,
+						},
+						tco: {
+							required: true,
+						}
+					}
+				})
+			})
+		</script>
+		
+		<!-- script de validação de formulários (userupdate) -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#formsenha").validate({
+					rules:{
+						senha: {
+							required: true,
+							maxlength: 6,
+							minlength: 4
+						},
+						novaSenha: {
+							required: true,
+							maxlength: 6,
+							minlength: 4
+						},
+						novaSenhaRep: {
+							required: true,
+							equalTo: "#novaSenha"
+						}
+					}
+				})
+			})
+		</script>
+
+</span>

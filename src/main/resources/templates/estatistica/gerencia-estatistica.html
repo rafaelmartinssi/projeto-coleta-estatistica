@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Home')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+	
+	<fieldset class="form-group">
+	 
+	 <h5>GERÊNCIA DE ESTATÍSTICAS</h5>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h6 class="card-title">Bloqueio de estatísticas</h6>
+						<p class="card-text">Permiti bloquear e desbloquear as estatísticas de um determinado mês.</p>
+						<a href="/bloqueioEstatistica" class="btn btn-primary">Entrar</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h6 class="card-title">Special title treatment</h6>
+						<p class="card-text">With supporting text below as a natural
+							lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</fieldset>
+	
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<head>
+<meta charset="UTF-8">
+</head>
+
+<div th:fragment="menu">
+
+<div class="row p-0 m-0 col-12 logo">
+	<div class="content-logo col-10">
+		<h1>1º DEPARTAMENTO - <span style="color: red"> BH </span></h1>	
+	</div>
+	<div class="col-2 text-right pt-3 pr-4">
+		<a class="logout btn btn-danger btn-sm" href="logout">SAIR</a>
+	</div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav justify-content-between">
+				<ul class="navbar-nav">	
+					
+					<li class="nav-item">
+						<a class="nav-link border-none" href="/">INÍCIO</a>
+					</li>
+								
+					<li class="nav-item dropdown">
+			        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         	 CADASTROS 
+			        	</a>
+			        	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+			          		<a class="dropdown-item" href="cadastroUsuario">USUÁRIOS</a>
+			          		<a class="dropdown-item" href="cadastroPessoa">GESTÃO DE SERVIDORES</a>
+			          		<a class="dropdown-item" href="cadastroUnidade">CADASTRO DE UNIDADE</a>
+			          		<a class="dropdown-item" href="cadastroEstatistica">CADASTRO DE ESTATÍSTICA</a>
+			        	</div>
+			      	</li>
+			      	
+			      	<li class="nav-item dropdown">
+			        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         	 RELATÓRIOS
+			        	</a>
+			        	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+			          		<a class="dropdown-item" href="relatorioUsuario">USUÁRIOS</a>
+			          		<a class="dropdown-item" href="relatorioPessoa">SERVIDORES</a>
+			          		<a class="dropdown-item" href="relatorioUnidade">UNIDADES</a>
+			          		<a class="dropdown-item" href="relatorioEstatistica">MINHAS ESTATÍSTICAS</a>
+			          		<a class="dropdown-item" href="gerenciaEstatistica">GERÊNCIA DE ESTATÍSTICAS</a>
+			        	</div>
+			      	</li>
+					
+			      	<li class="nav-item dropdown">
+			        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			         	 MEU PERFIL
+			        	</a>
+			        	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+			          		<a class="dropdown-item" href="registroPessoa">MEU CADASTRO</a>
+			          		<a class="dropdown-item" href="atualizarSenha">ALTERAR SENHA</a>
+			        	</div>
+			      	</li>
+
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+</nav>
+
+</div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+
+	<div class="main">
+
+	<fieldset class="form-group">
+	 
+	<h5>CADASTRO DE UNIDADE</h5>
+
+	<form action="salvarUnidade" id="" method="post">
+	
+	<p>Esta página permite incluir uma nova unidade.</p>
+	
+		<div class="form-row">
+    	<div class="form-group col-12">
+		<label>Nome de Unidade </label> 
+		<input type="text" class="form-control" id="nome" name="nome"> 
+		</div>
+		</div> 
+		
+		<div class="form-row">
+    	<div class="form-group col-4">
+		<label>Sigla </label> 
+		<input type="text" class="form-control" id="sigla" name="sigla"> 
+		</div>
+		<div class="form-group col-4">
+		<label>Código </label> 
+		<input	type="number" class="form-control" id="codigo" name="codigo"> 
+		</div>
+		<div class="form-group col-4">
+		<label>Código Regional</label> 
+		<input	type="number" class="form-control" id="codRegional" name="codRegional"> 
+		</div>
+		</div> 
+		
+		<h5 class="line-botton"></h5>
+		
+		<div class="form-row">
+		<div class="form-group pt-3">
+		<input class="btn btn-secondary ml-1" value="Incluir" type="submit">
+		<a class="btn btn-secondary ml-3" href="/">Voltar</a>
+		</div>
+		</div>
+		
+	</form>
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

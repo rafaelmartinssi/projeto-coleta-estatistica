@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/fragment-menu :: menu}"></div>
+
+	<div th:replace="~{fragments/fragment-message :: message}"></div>
+
+	<div class="main">
+
+	 <fieldset class="form-group">
+	 
+	 <h5>CADASTRO DE USUÁRIO</h5>
+
+	<form action="salvarUsuario" id="formpessoa" method="post">
+	
+	<p>Esta página permite incluir um novo usuário ao sistema, após incluir vá para a página de relatórios pesquise pelo nome do usuário e atribua as permissões que desejar.</p>
+	
+		<div class="form-row">
+    	<div class="form-group col-6">
+		<label>Nome </label> 
+		<input type="text" class="form-control" id="nome" name="nome"> 
+		</div>
+    	<div class="form-group col-6">
+		<label>Masp </label> 
+		<input	type="text" class="form-control" id="masp" name="masp"> 
+		<div class="bg-red" th:if="${maspblock != null}">
+			<div th:each="malert : ${maspblock}">
+				<label th:text="${malert}"></label>
+			</div>
+		</div>
+		</div>
+		</div> 
+		
+		<div class="form-row">
+		<div class="form-group col-6">
+      	<label for="unidade">Unidade </label>
+      	<select id="unidade" name="unidade" class="form-control">
+      	<option value="" th:each="u:${unidades}" th:value="${u.id}" th:text="${u.sigla}"></option>
+        <option value=""></option>
+      	</select>
+      	</div>
+		<div class="form-group col-6">
+		<label>Celular </label> 
+		<input type="text" class="form-control" id="celular" name="celular">
+		</div>
+		</div> 
+		
+		<div class="form-row">
+    	<div class="form-group col-6">
+		<label>E-mail </label> 
+		<input type="email" class="form-control" id="email" name="email"> 
+		</div>
+		<div class="form-group col-6">
+		<label>Senha </label> 
+		<input type="password" class="form-control" id="senhaValor" name="senhaValor">
+		</div>
+		</div>
+		
+		<h5 class="line-botton"></h5>
+		
+		<div class="form-row">
+		<div class="form-group pt-3">
+		<input class="btn btn-secondary ml-1" value="Salvar" type="submit" sec:authorize="hasAnyRole('ROLE_MASTER')">
+		<a class="btn btn-secondary ml-3" href="/">Voltar</a>
+		</div>
+		</div>
+		
+	</form>
+	
+	</fieldset>
+	
+	</div>
+
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+
+</body>
+</html>

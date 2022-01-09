@@ -1,0 +1,173 @@
+fieldset {
+	width: 80%;
+	margin-top: 30px !important;
+	margin: auto;
+	padding: 25px;
+	box-sizing: border-box;
+	background-color: white;
+	border: 1px solid rgba(220,220,220);
+}
+
+body {
+	font-family: Helvetica, sans-serif;
+	color: #696969;
+	font-size: 13px;
+}
+
+h5 {
+	font-family: Franklin Gothic, sans-serif;
+	border-bottom: 2px solid #696969;
+	margin-bottom: 26px;
+	color: black !important;
+	padding-bottom: 10px;
+	font-weight: bold;	
+	font-size: 22px !important;
+}
+
+p {
+	background-color: #DCDCDC;
+	border: 1px solid #D3D3D3;
+	padding: 3px;
+	line-height: 1.5;
+}
+
+.card-text {
+	background-color: white;
+	border: 0px;
+}
+
+.card-title {
+	font-weight: bold;
+}
+
+.line-botton {
+	border-bottom: 2px solid #696969;
+	margin-bottom: 5px;
+	color: #696969;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+
+/* a partir daqui formatação de menu*/
+.dropdown-menu {
+	background-color: black !important;
+	padding: 0 !important;
+	margin: 0 !important; 
+	border-radius: 0;
+	opacity: 0.8;
+}
+
+.dropdown-menu a {
+	font-family: Franklin Gothic, sans-serif;
+	background-color: black !important;
+	color: #DCDCDC !important;
+	font-weight: bold;
+	font-size: 14px !important;
+}
+
+.dropdown-menu a:hover {
+	font-family: Franklin Gothic, sans-serif;
+	background-color: black !important;
+	color: white !important;
+	font-weight: bold;
+	font-size: 14px !important;
+}
+
+.nav-link {
+	font-family: Franklin Gothic, sans-serif;
+	font-size: 18px !important;
+	font-weight: bold;
+	color: #DCDCDC !important;
+}
+
+.navbar {
+ 	background-color: black !important;
+}
+
+.nav-link:hover {
+	color: white !important;
+}
+
+/*fim*/
+
+.icons {
+	text-align: center !important;
+	color: black;
+	font-size: 20px;
+}
+
+.blockquote {
+	font-family: Franklin Gothic, sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+	color: black;
+}
+
+.large {
+	width: 100% !important;
+}
+
+.btn {
+	width: 150px;
+}
+
+.table-roles {
+	border-radius: 10px;
+	border: 1px solid #D3D3D3 !important;
+}
+
+.full-name {
+	font-family: Franklin Gothic, sans-serif;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.bg-red {
+	color: red;
+}
+
+.logo {
+ background-color: black;
+ height: 100px;
+ border-bottom: 1px solid white;
+}
+
+.content-logo {
+	background-color: white;
+	height: 100%;
+	border-radius: 30% 0 100% 0;
+}
+
+h1 {
+	font-family: Franklin Gothic, sans-serif;
+	font-weight: bold;
+	color: #1E90FF;
+	margin-left: 30px;
+	padding-top: 22px;
+	text-shadow: -1px 1px 1px rgba(192,192,192,0.9),
+	-2px 2px 2px rgba(192,192,192,0.8),
+	-3px 3px 3px rgba(192,192,192,0.7),
+	-4px 4px 4px rgba(192,192,192,0.6),
+	-5px 5px 5px rgba(192,192,192,0.5);
+}
+
+.logout{
+	font-family: Franklin Gothic, sans-serif;
+	color: #dcdcdc !important;
+	font-size: 10px;
+	width: 60px;
+}
+
+.icon-close {
+	color: white;
+}
+
+.page-link{
+	color: #696969;
+	font-family: Helvetica, sans-serif;
+}
+
+.selected {
+	background-color: #777;
+	color: white; 
+}

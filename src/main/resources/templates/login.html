@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{fragments/fragment-head :: head('Login')}"></head>
+
+<body>
+
+	<div class="container">
+		<div class="row justify-content-center align-items-center"
+			style="height: 100vh">
+			<div class="col-4">
+				<div class="card bg-light">
+					<div class="card-body">
+					<blockquote class="blockquote text-center">ACESSO AO SISTEMA</blockquote>
+						<!-- o spring security intercepta essa action e já entende que é de login, não precisa implementar o metodo -->
+						<form th:action="@{/login}" method="post" autocomplete="off">
+							<div class="form-group">
+								<input id="masp" type="text" class="form-control" name="username" placeholder="Digite o Masp">
+							</div>
+							<div class="form-group">
+								<input id="password" type="password" class="form-control" name="password" placeholder="Digite a senha">
+							</div>
+							<button type="submit" id="sendlogin" class="btn btn-primary large">Entrar</button>
+							
+							<div class="form-group" th:if="${param.error}">
+        						<p>Masp ou senha incorretos, tente novamente.</p>
+    						</div>
+
+    						<div class="form-group">
+    						<input type="checkbox" id="remember-me" name="remember-me" />
+  							<label class="mt-2" for="remember-me">Lembrar?</label>
+  							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 
+	<span th:replace="~{fragments/fragment-scripts :: scripts}"></span>
+	
+</body>
+</html>
